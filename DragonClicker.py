@@ -69,17 +69,17 @@ class mainLoop:
             render = sys_font.render("Updatestufe:"+str(Update),0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 30)
-            render = sys_font.render("Kosten fürs Klick-Update:"+" "+str(KosUp1),0,(0,0,0))
+            render = sys_font.render("Kosten fuers Klick-Update:"+" "+str(KosUp1),0,(0,0,0))
             setDisplay.blit(render, (900,40))
             sys_font = pygame.font.SysFont(None, 30)
-            render = sys_font.render("Drücke"+" "+str(Taste)+" "+"zum verbessern",0,(0,0,0))
+            render = sys_font.render("Druecke"+" "+str(Taste)+" "+"zum verbessern",0,(0,0,0))
             setDisplay.blit(render, (900,80))
             sys_font = pygame.font.SysFont(None, 30)
-            render = sys_font.render("Kosten fürs Sec-Update:"+" "+str(KosUp2),0,(0,0,0))
+            render = sys_font.render("Kosten fuers Sec-Update:"+" "+str(KosUp2),0,(0,0,0))
             setDisplay.blit(render, (900,130))
             sys_font = pygame.font.SysFont(None, 50)
             sys_font = pygame.font.SysFont(None, 30)
-            render = sys_font.render("Drücke"+" "+str(Taste2)+" "+"zum verbessern",0,(0,0,0))
+            render = sys_font.render("Dreucke"+" "+str(Taste2)+" "+"zum verbessern",0,(0,0,0))
             setDisplay.blit(render, (900,170))
             render = sys_font.render(("Punkte:"+str(punkte)),0,(0,0,0))
             setDisplay.blit(render, (30,215))
@@ -162,7 +162,7 @@ class mainLoop:
 
                     if event.key == K_m:
                         punkte += 500
-                        print("Cheater ^^")
-                    #nur für Entwickler zum Testen
+                        print("Cheater ")
+                    #nur feur Entwickler zum Testen
 ###############################################################                        
 mainLoop()
