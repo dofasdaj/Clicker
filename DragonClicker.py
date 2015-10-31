@@ -1,6 +1,7 @@
 __author__ = 'Smyke, dofasdaj'
 import pygame,sys
 import time
+import random
 from pygame import *
 pygame.init()
 
@@ -16,10 +17,10 @@ coolBlack = (10,10,10)
 coolWhite = (250,250,250)
 orange = (250,160,31)
 DisplayGr = (1200, 700)
-setDisplay = pygame.display.set_mode((1200, 700))
+setDisplay = pygame.display.set_mode((1300, 800))
 pygame.display.set_caption("Dragon Clicker")
 Dragon_Clicker = True
-
+i = 0
 display_X = 800
 display_Y = 400
 UpPerC2 = False
@@ -34,7 +35,7 @@ UpPerC10 = False
 UpPerC11 = False
 UpPerC12 = False
 UpPerC13 = False
-
+RUp1 = False
 font = pygame.font.SysFont(None, 25)
 
 class mainLoop:
@@ -62,25 +63,27 @@ class mainLoop:
         UpPerC11 = False
         UpPerC12 = False
         UpPerC13 = False
+        RUp1 = False
         ####################
         punkte = 0
+        i = 0
         while Dragon_Clicker:
             sys_font = pygame.font.SysFont(None, 60)
             render = sys_font.render("Updatestufe:"+str(Update),0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 30)
             render = sys_font.render("Kosten fuers Klick-Update:"+" "+str(KosUp1),0,(0,0,0))
-            setDisplay.blit(render, (900,40))
+            setDisplay.blit(render, (850,40))
             sys_font = pygame.font.SysFont(None, 30)
             render = sys_font.render("Druecke"+" "+str(Taste)+" "+"zum verbessern",0,(0,0,0))
-            setDisplay.blit(render, (900,80))
+            setDisplay.blit(render, (850,80))
             sys_font = pygame.font.SysFont(None, 30)
             render = sys_font.render("Kosten fuers Sec-Update:"+" "+str(KosUp2),0,(0,0,0))
-            setDisplay.blit(render, (900,130))
-            sys_font = pygame.font.SysFont(None, 50)
+            setDisplay.blit(render, (850,130))
             sys_font = pygame.font.SysFont(None, 30)
             render = sys_font.render("Dreucke"+" "+str(Taste2)+" "+"zum verbessern",0,(0,0,0))
-            setDisplay.blit(render, (900,170))
+            setDisplay.blit(render, (850,170))
+            sys_font = pygame.font.SysFont(None, 30)
             render = sys_font.render(("Punkte:"+str(punkte)),0,(0,0,0))
             setDisplay.blit(render, (30,215))
             pygame.display.update()
@@ -103,8 +106,14 @@ class mainLoop:
                         punkte += 3
                     if UpPerC4 == True:
                         punkte += 4
+                    #if RUp1 == True:
+                        #i = random.randrange(10)
+                        #time.wait(10)
+                        #if i == 9:
+                            #punkte * 2
                     else:
                         punkte += 1
+                    
                 ###################################
                 if event.type == KEYDOWN:
                     if event.key == K_e and PerSec1 == False:
@@ -155,7 +164,12 @@ class mainLoop:
                             KosUp1 = 1000
                             time.wait(10)
                             Taste = "Q"
-                    
+                    if event.key == K_a:
+                        if punkte >= 300:
+                            punkte -= 300
+                            Update += 1
+                            time.wait(10)
+                            RUp1 = True
                         else:
                              print("error")
                          
