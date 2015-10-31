@@ -35,32 +35,21 @@ UpPerC11 = False
 UpPerC12 = False
 UpPerC13 = False
 
-
-#class ButtonUp1(object):
-   # def __init__(self,DisplayGr): 
-       # self.xp = 100
-      #  self.yp = 100
-      #  self.setDisplay = pygame.display.set_mode((1200,700))
-     #   self.setDisplay = setDisplay
-      #  self.farbe = (255,1,1)
-      #  self.höhe = 100
-     #   self.breite = 100
-      #  self.rect = pygame.Rect(0, self.yp-int(self.höhe*0.5),self.breite,self.höhe)
-   # def update(self):
-     #  self.rect.center = (self.xp,self.yp)
-   # def render(self,setDisplay):
-    #    pygame.draw.rect(setDisplay,self.farbe, self.rect, 0)
-    #    pygame.draw.rect(setDisplay,(255,1,1), self.rect, 1)
-
 font = pygame.font.SysFont(None, 25)
 
 class mainLoop:
     def __init__(self):
         Taste = "Q"
+        Taste2 = "E"
         DisplayGr = (1200, 700)
-        #######################
+        ###################
         KosUp1 = 100
+        KosUp2 = 200
         Update = 1
+        ###################
+        PerSec1 = False
+        PerSec2 = False
+        ###################
         UpPerC2 = False
         UpPerC3 = False
         UpPerC4 = False
@@ -73,24 +62,35 @@ class mainLoop:
         UpPerC11 = False
         UpPerC12 = False
         UpPerC13 = False
+        ####################
         punkte = 0
         while Dragon_Clicker:
             sys_font = pygame.font.SysFont(None, 60)
             render = sys_font.render("Updatestufe:"+str(Update),0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 30)
-            render = sys_font.render("Kosten pro Update:"+" "+str(KosUp1),0,(0,0,0))
+            render = sys_font.render("Kosten fürs Klick-Update:"+" "+str(KosUp1),0,(0,0,0))
             setDisplay.blit(render, (900,40))
             sys_font = pygame.font.SysFont(None, 30)
             render = sys_font.render("Drücke"+" "+str(Taste)+" "+"zum verbessern",0,(0,0,0))
             setDisplay.blit(render, (900,80))
+            sys_font = pygame.font.SysFont(None, 30)
+            render = sys_font.render("Kosten fürs Sec-Update:"+" "+str(KosUp2),0,(0,0,0))
+            setDisplay.blit(render, (900,130))
             sys_font = pygame.font.SysFont(None, 50)
+            sys_font = pygame.font.SysFont(None, 30)
+            render = sys_font.render("Drücke"+" "+str(Taste2)+" "+"zum verbessern",0,(0,0,0))
+            setDisplay.blit(render, (900,170))
             render = sys_font.render(("Punkte:"+str(punkte)),0,(0,0,0))
             setDisplay.blit(render, (30,215))
             pygame.display.update()
             bild = pygame.image.load("CookieBild.bmp")
             bild = bild.convert()
             setDisplay.blit(bild, (0,0))
+            if PerSec1 == True:
+                punkte += 0.02
+            if PerSec2 == True:
+                punkte += 0.04
             #################################
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -107,6 +107,22 @@ class mainLoop:
                         punkte += 1
                 ###################################
                 if event.type == KEYDOWN:
+                    if event.key == K_e and PerSec1 == False:
+                        if punkte >= 200:
+                            punkte -= 200
+                            Update+= 1
+                            KosUp2 = 500
+                            Taste2 = "R"
+                            time.wait(10)
+                            PerSec1 = True
+                    if event.key == K_r:
+                        if punkte >= 500 and PerSec2 == False:
+                            punkte -= 500
+                            Update += 1
+                            KosUp2 = 1000
+                            Taste2 = "E"
+                            time.wait(10)
+                            PerSec2 = True
                     if event.key == K_q:
                         if punkte >= 100 and UpPerC2 == False :
                             UpPerC2 = True
@@ -124,14 +140,14 @@ class mainLoop:
                             time.wait(10)
                             Taste = "Q"
                     if event.key == K_q and UpPerC3 == True:
-                        if punkte >= 500 and UpPerC4 == False and UpPerC3 == True:
+                        if punkte >= 500 and UpPerC4 == False:
                             UpPerC4 = True
                             punkte -= 500
                             Update += 1
                             KosUp1 = 1000
                             time.wait(10)
                             Taste = "W"
-                    if event.key == K_w and UpPerC4 == True:
+                    if event.key == K_w and UpPerC5 == False:
                         if punkte >= 1000 and UpPerC5 == False:
                             UpPerC3 = True
                             punkte -= 1000
@@ -145,7 +161,8 @@ class mainLoop:
                          
 
                     if event.key == K_m:
-                        punkte += 1000000000
+                        punkte += 500
                         print("Cheater ^^")
-                        
+                    #nur für Entwickler zum Testen
+###############################################################                        
 mainLoop()
