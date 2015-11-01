@@ -49,38 +49,27 @@ class mainLoop:
         KosUp2 = 200
         KosUp3 = 1000
         KosUp4 = 5000
+        KosUp5 = 20000
+        KosUp6 = 100000
         Update = 1
-        ###################
-        PerSec1 = False
-        PerSec2 = False
-        ###################
-        UpPerC2 = False
-        UpPerC3 = False
-        UpPerC4 = False
-        UpPerC5 = False
-        UpPerC6 = False
-        UpPerC7 = False
-        UpPerC8 = False
-        UpPerC9 = False
-        UpPerC10 = False
-        RUp1 = False
-        MaUp1 = False
-        MaUp2 = False
-        BerUp1 = False
-        ####################
         punkte = 0
+        AnWaS = 0
+        WaS = 1
         LS = 1
         MS = 0
         BS = 0
         Bog = 0
+        SiMi = 0
+        MiSt = 0
         i = 0
+        MiSt += SiMi
         while Dragon_Clicker:
             sys_font = pygame.font.SysFont(None, 60)
             render = sys_font.render("Nicht Cookie",0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 35)
             sys_font = pygame.font.SysFont(None, 50)
-            render = sys_font.render(("Geld:"+str(punkte)),0,(0,0,0))
+            render = sys_font.render(("Geld:"+str(round(punkte))),0,(0,0,0))
             setDisplay.blit(render, (30,100))
             render = sys_font.render("Staerke deiner Armee:"+ str(Update),0,(0,0,0))
             setDisplay.blit(render, (30,200))
@@ -95,6 +84,10 @@ class mainLoop:
             setDisplay.blit(render, (30,350))
             render = sys_font.render("Berserker:"+str(BS),0,(0,0,0))
             setDisplay.blit(render, (30,400))
+            render = sys_font.render("Minen:"+str(SiMi),0,(0,0,0))
+            setDisplay.blit(render, (30,520))
+            render = sys_font.render("Waffen Schmied:"+str(AnWaS),0,(0,0,0))
+            setDisplay.blit(render, (30,570))
             render = sys_font.render("Dein Schwert:"+" "+str(KosUp1),0,(0,0,0))
             setDisplay.blit(render, (850,40))
             render = sys_font.render("Q"+" "+"zum verbessern.",0,(0,0,0))
@@ -111,21 +104,31 @@ class mainLoop:
             setDisplay.blit(render, (850,290))
             render = sys_font.render("R"+" "+"zum verbessern",0,(0,0,0))
             setDisplay.blit(render, (850,330))
+            render = sys_font.render("Mine:"+" "+str(KosUp5),0,(0,0,0))
+            setDisplay.blit(render, (850,380))
+            render = sys_font.render("A" +" "+"zum bauen",0,(0,0,0))
+            setDisplay.blit(render, (850,420))
+            render = sys_font.render("Waffen Schmied:"+" "+str(KosUp6),0,(0,0,0))
+            setDisplay.blit(render, (850,470))
+            render = sys_font.render("S" +" "+"zum bauen",0,(0,0,0))
+            setDisplay.blit(render, (850,510))
             
             pygame.display.update()
             bild = pygame.image.load("CookieBild.bmp")
             bild = bild.convert()
             setDisplay.blit(bild, (0,0))
-            punkte += 0.03 * Bog
-            punkte += 0.1 * MS
-            punkte += 0.5 * BS
+            punkte += 0.03 * Bog * WaS
+            punkte += 0.1 * MS * WaS
+            punkte += 0.5 * BS * WaS
+            punkte += punkte * MiSt
+            round(punkte,1)
             #################################
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    punkte += 1 * LS                    
+                    punkte += 1 * LS * WaS                  
                 ###################################
                 if event.type == KEYDOWN:
                     #Bogenschuetzen
@@ -154,17 +157,27 @@ class mainLoop:
                             MS += 1
                     #Berserker
                     if event.key == K_r:
-                        if punkte >= 5000 and BerUp1 == False:
+                        if punkte >= 5000:
                             punkte -= 5000
                             Update += 1
-                            KosUp4 = 20000
                             time.wait(10)
                             BS += 1
-                    else:
-                        print("error")
+                    #Silberminen
+                    if event.key == K_a:
+                        if punkte >= 20000:
+                            punkte -= 20000
+                            time.wait(10)
+                            SiMi += 1
+                            MiSt += 0.0001
+                    #Waffenschmied
+                    if event.key == K_s:
+                        if punkte >= 100000:
+                            punkte -= 100000
+                            time.wait(10)
+                            WaS += 1
+                            AnWaS += 1
                     if event.key == K_m:
-                        punkte += 500
-                        print("Cheater ")
+                        punkte += 20000
                     #nur feur Entwickler zum Testen
 ###############################################################                        
 mainLoop()
