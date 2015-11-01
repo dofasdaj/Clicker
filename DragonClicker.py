@@ -103,11 +103,11 @@ class mainLoop:
             setDisplay.blit(render, (850,300))
             render = sys_font.render("Waffenschmied:"+" "+str(KosUp6),0,(0,255,0))
             setDisplay.blit(render, (850,390))
-            render = sys_font.render("S" +" "+"zum bauen",0,(0,255,0))
+            render = sys_font.render("D" +" "+"zum bauen",0,(0,255,0))
             setDisplay.blit(render, (850,420))
             render = sys_font.render("Goldschmied:"+" "+str(KosUp7),0,(0,255,0))
             setDisplay.blit(render, (850,330))
-            render = sys_font.render("D" +" "+"zum bauen",0,(0,255,0))
+            render = sys_font.render("S" +" "+"zum bauen",0,(0,255,0))
             setDisplay.blit(render, (850,360))
             render = sys_font.render("ESC" +" " +"zum Menu",0,(0,0,0))
             setDisplay.blit(render, (1000,650))
@@ -166,7 +166,7 @@ class mainLoop:
                             SiMi += 1
                             MiSt += 0.0001
                     #Waffenschmied
-                    if event.key == K_s:
+                    if event.key == K_d:
                         if punkte >= 1000000:
                             punkte -= 1000000
                             time.wait(10)
