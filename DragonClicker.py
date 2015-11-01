@@ -56,7 +56,7 @@ class mainLoop:
         while Dragon_Clicker:
             
             sys_font = pygame.font.SysFont(None, 50)
-            render = sys_font.render(("Geld:"+" "+str(round(punkte))),0,(0,0,0))
+            render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 40)
             render = sys_font.render("Staerke deiner Armee:"+ str(Update),0,(0,0,0))
@@ -154,7 +154,7 @@ class mainLoop:
                             Update += 1
                             time.wait(10)
                             BS += 1
-                    #Silberminen
+                    #Minen
                     if event.key == K_a:
                         if punkte >= 20000:
                             punkte -= 20000
@@ -175,8 +175,6 @@ class mainLoop:
                             time.wait(10)
                             GSS += 2
                             GS += 1
-                    if event.key == K_m:
-                        punkte += 1000000000
                     #nur feur Entwickler zum Testen
 ###############################################################                        
 mainLoop()
