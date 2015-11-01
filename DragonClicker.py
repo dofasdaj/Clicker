@@ -16,6 +16,7 @@ blue = (0,0,255)
 coolBlack = (10,10,10)
 coolWhite = (250,250,250)
 orange = (250,160,31)
+grey = (100,100,100)
 DisplayGr = (1200, 700)
 setDisplay = pygame.display.set_mode((1300, 800))
 pygame.display.set_caption("Dragon Clicker")
@@ -23,7 +24,7 @@ Dragon_Clicker = True
 i = 0
 display_X = 1200
 display_Y = 700
-#font = pygame.font.SysFont(None, 25)
+font = pygame.font.SysFont(None, 25)
 class mainLoop:
     def __init__(self):
         Taste = "Q"
@@ -106,7 +107,8 @@ class mainLoop:
             setDisplay.blit(render, (850,330))
             render = sys_font.render("D" +" "+"zum bauen",0,(0,255,0))
             setDisplay.blit(render, (850,360))
-            
+            render = sys_font.render("D" +" " +"zum menu",0,(0,0,0))
+            setDisplay.blit(render, (1000,650))
             pygame.display.update()
             bild = pygame.image.load("CookieBild.bmp")
             bild = bild.convert()
@@ -175,6 +177,9 @@ class mainLoop:
                             time.wait(10)
                             GSS += 2
                             GS += 1
+                    if event.key == K_d:
+                        message_to_screen("Menu noch nicht vorhanden",grey)
+                        time.sleep(2)
                     #nur feur Entwickler zum Testen
 ###############################################################                        
 mainLoop()
