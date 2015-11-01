@@ -116,49 +116,116 @@ class mainLoop:
             bild = pygame.image.load("CookieBild.bmp")
             bild = bild.convert()
             setDisplay.blit(bild, (0,0))
-            punkte += 0.03 * Bog
-            punkte += 0.1 * MS
-            punkte += 0.5 * BS
+            if PerSec1 == True:
+                punkte += 0.02
+            if PerSec2 == True:
+                punkte += 0.04
+            if MaUp1 == True:
+                punkte += 0.1
+            if MaUp2 == True:
+                punkte += 0.2
+            if BerUp1 == True:
+                punkte += 0.5
             #################################
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    punkte += 1 * LS                    
+                    if UpPerC2 == True:
+                        punkte += 2
+                    if UpPerC3 == True:
+                        punkte += 3
+                    if UpPerC4 == True:
+                        punkte += 4
+                    if UpPerC5 == True:
+                        punkte += 5
+                    else:
+                        punkte += 1
+                    
                 ###################################
                 if event.type == KEYDOWN:
-                    #Bogenschützen
-                    if event.key == K_w:
+                    if event.key == K_e and PerSec1 == False:
                         if punkte >= 200:
                             punkte -= 200
-                            Update += 1
+                            Update+= 1
                             KosUp2 = 500
+                            Taste2 = "R"
+                            time.wait(10)
+                            PerSec1 = True
+                            Bog += 1
+                    if event.key == K_r:
+                        if punkte >= 500 and PerSec2 == False and PerSec1 == True:
+                            PerSec2 = True
+                            punkte -= 500
+                            Update += 1
+                            KosUp2 = 1000
+                            Taste2 = "E"
                             time.wait(10)
                             Bog += 1
-                            #Schwert
+                            
                     if event.key == K_q:
-                        if punkte >= 100:
+                        if punkte >= 100 and UpPerC2 == False :
+                            UpPerC2 = True
                             punkte -= 100
                             Update += 1
+                            KosUp1 = 250
+                            Taste = "W"
                             time.wait(10)
                             LS += 1
-                    #Magier
-                    if event.key == K_e:
+                    if event.key == K_w and UpPerC2 == True:
+                        if punkte >= 250 and UpPerC3 == False:
+                            UpPerC3 = True
+                            punkte -= 250
+                            Update += 1
+                            KosUp1 = 500
+                            time.wait(10)
+                            Taste = "Q"
+                            LS += 1
+                    if event.key == K_q and UpPerC3 == True:
+                        if punkte >= 500 and UpPerC4 == False:
+                            UpPerC4 = True
+                            punkte -= 500
+                            Update += 1
+                            KosUp1 = 1000
+                            time.wait(10)
+                            Taste = "W"
+                            LS += 1
+                    if event.key == K_w and UpPerC5 == False:
+                        if punkte >= 1000 and UpPerC5 == False:
+                            UpPerC5 = True
+                            punkte -= 1000
+                            Update += 1
+                            KosUp1 = 1000
+                            time.wait(10)
+                            Taste = "Q"
+                            LS += 1
+                    if event.key == K_a and MaUp1 == False:
                         if punkte >= 1000:
+                            MaUp1 = True
                             punkte -= 1000
                             Update += 1
                             KosUp3 = 3000
                             time.wait(10)
                             Taste3 = "S"
                             MS += 1
-                    #Berserker
-                    if event.key == K_r:
+                    if event.key == K_s:
+                        if punkte >= 3000 and MaUp1 == True and MaUp2 == False:
+                            MaUp2 = True
+                            punkte -= 3000
+                            Update += 1
+                            KosUp3 = 10000
+                            time.wait(10)
+                            Taste3 = "A"
+                            MS += 1
+                    if event.key == K_d:
                         if punkte >= 5000 and BerUp1 == False:
+                            BerUp1 = True
                             punkte -= 5000
                             Update += 1
                             KosUp4 = 20000
                             time.wait(10)
+                            Taste4 = "F"
                             BS += 1
 
                     else:
