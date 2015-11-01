@@ -42,6 +42,7 @@ class mainLoop:
         KosUp5 = 20000
         KosUp7 = 100000
         KosUp6 = 1000000
+        KosUp8 = 500000
         Update = 1
         punkte = 0
         AnWaS = 0
@@ -55,6 +56,7 @@ class mainLoop:
         i = 0
         GSS = 1
         GS = 0
+        KS = 0
         MiSt += SiMi
         while Dragon_Clicker:
             
@@ -97,18 +99,26 @@ class mainLoop:
             setDisplay.blit(render, (850,210))
             render = sys_font.render("R"+" "+"zum verbessern",0,(255,0,0))
             setDisplay.blit(render, (850,240))
-            render = sys_font.render("Mine:"+" "+str(KosUp5),0,(255,255,0))
+            render = sys_font.render("Katapult:"+" "+str(KosUp8),0,(255,0,0))
             setDisplay.blit(render, (850,270))
-            render = sys_font.render("A" +" "+"zum bauen",0,(255,255,0))
+            render = sys_font.render("T"+" "+"zum verbessern",0,(255,0,0))
             setDisplay.blit(render, (850,300))
-            render = sys_font.render("Waffenschmied:"+" "+str(KosUp6),0,(0,255,0))
-            setDisplay.blit(render, (850,390))
-            render = sys_font.render("D" +" "+"zum bauen",0,(0,255,0))
-            setDisplay.blit(render, (850,420))
-            render = sys_font.render("Goldschmied:"+" "+str(KosUp7),0,(0,255,0))
+            render = sys_font.render("Mine:"+" "+str(KosUp5),0,(255,255,0))
             setDisplay.blit(render, (850,330))
-            render = sys_font.render("S" +" "+"zum bauen",0,(0,255,0))
+            render = sys_font.render("A" +" "+"zum bauen",0,(255,255,0))
             setDisplay.blit(render, (850,360))
+            render = sys_font.render("Waffenschmied:"+" "+str(KosUp6),0,(0,255,0))
+            setDisplay.blit(render, (850,450))
+            render = sys_font.render("D" +" "+"zum bauen",0,(0,255,0))
+            setDisplay.blit(render, (850,480))
+            render = sys_font.render("ES IST TEUER:"+" "+"10000000000",0,(0,255,0))
+            setDisplay.blit(render, (850,510))
+            render = sys_font.render("L" +" "+"zum bauen",0,(0,255,0))
+            setDisplay.blit(render, (850,540))
+            render = sys_font.render("Goldschmied:"+" "+str(KosUp7),0,(0,255,0))
+            setDisplay.blit(render, (850,390))
+            render = sys_font.render("S" +" "+"zum bauen",0,(0,255,0))
+            setDisplay.blit(render, (850,420))
             render = sys_font.render("ESC" +" " +"zum Menu",0,(0,0,0))
             setDisplay.blit(render, (1000,650))
             pygame.display.update()
@@ -119,6 +129,7 @@ class mainLoop:
             punkte += 0.1 * MS * WaS
             punkte += 0.5 * BS * WaS
             punkte += punkte * (MiSt * GSS)
+            punkte += 2 * KS * WaS
             round(punkte,1)
             #################################
             for event in pygame.event.get():
@@ -158,6 +169,13 @@ class mainLoop:
                             Update += 1
                             time.wait(10)
                             BS += 1
+                    #Katapul
+                    if event.key == K_t:
+                        if punkte >= 50000:
+                            punkte -= 50000
+                            Update += 1
+                            time.wait(10)
+                            KS += 1
                     #Minen
                     if event.key == K_a:
                         if punkte >= 20000:
@@ -179,9 +197,18 @@ class mainLoop:
                             time.wait(10)
                             GSS += 2
                             GS += 1
+                    if event.key == K_l:
+                        if punkte >= 1000000000:
+                            punkte -= 1000000000
+                            time.wait(10)
+                            print("Gehe nach drausen!!!")
+                            print("Du spielst dieses Spiel schon zulange")
+                            time.wait(10000000000000000000000000000000000000000000)
                     if event.key == K_ESCAPE:
                         Menue()
                         time.wait(20)
+                    if event.key == K_m:
+                        punkte += 500000
                     #nur feur Entwickler zum Testen
 ###############################################################                        
 mainLoop()
