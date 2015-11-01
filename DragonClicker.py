@@ -25,6 +25,8 @@ i = 0
 display_X = 1200
 display_Y = 700
 font = pygame.font.SysFont(None, 25)
+def Menue():
+    print("Hi")
 class mainLoop:
     def __init__(self):
         Taste = "Q"
@@ -107,7 +109,7 @@ class mainLoop:
             setDisplay.blit(render, (850,330))
             render = sys_font.render("D" +" "+"zum bauen",0,(0,255,0))
             setDisplay.blit(render, (850,360))
-            render = sys_font.render("D" +" " +"zum menu",0,(0,0,0))
+            render = sys_font.render("ESC" +" " +"zum Menu",0,(0,0,0))
             setDisplay.blit(render, (1000,650))
             pygame.display.update()
             bild = pygame.image.load("CookieBild.bmp")
@@ -177,9 +179,9 @@ class mainLoop:
                             time.wait(10)
                             GSS += 2
                             GS += 1
-                    if event.key == K_d:
-                        message_to_screen("Menu noch nicht vorhanden",grey)
-                        time.sleep(2)
+                    if event.key == K_ESCAPE:
+                        Menue()
+                        time.wait(20)
                     #nur feur Entwickler zum Testen
 ###############################################################                        
 mainLoop()
