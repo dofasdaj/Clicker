@@ -61,13 +61,13 @@ class mainLoop:
         while Dragon_Clicker:
             
             sys_font = pygame.font.SysFont(None, 50)
-            render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
+            render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "€"),0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 40)
             render = sys_font.render("Staerke deiner Armee:"+ str(Update),0,(0,0,0))
             setDisplay.blit(render, (30,50))
             render = sys_font.render("Deine Wirtschaft:",0,(0,0,0))
-            setDisplay.blit(render, (30,205))
+            setDisplay.blit(render, (30,235))
             sys_font = pygame.font.SysFont(None, 30)
             render = sys_font.render("Dein Schwert:"+str(LS),0,(0,0,0))
             setDisplay.blit(render, (30,90))
@@ -77,12 +77,14 @@ class mainLoop:
             setDisplay.blit(render, (30,150))
             render = sys_font.render("Berserker:"+str(BS),0,(0,0,0))
             setDisplay.blit(render, (30,180))
+            render = sys_font.render("Katapult:"+str(KS),0,(0,0,0))
+            setDisplay.blit(render, (30,210))
             render = sys_font.render("Minen:"+str(SiMi),0,(0,0,0))
-            setDisplay.blit(render, (30,240))
+            setDisplay.blit(render, (30,265))
             render = sys_font.render("Goldschmied:"+str(GS),0,(0,0,0))
-            setDisplay.blit(render, (30,275))
+            setDisplay.blit(render, (30,295))
             render = sys_font.render("Waffenschmied:"+str(AnWaS),0,(0,0,0))
-            setDisplay.blit(render, (30,310))
+            setDisplay.blit(render, (30,330))
             render = sys_font.render("Dein Schwert:"+" "+str(KosUp1),0,(255,0,0))
             setDisplay.blit(render, (850,30))
             render = sys_font.render("Q"+" "+"zum verbessern.",0,(255,0,0))
@@ -129,7 +131,7 @@ class mainLoop:
             punkte += 0.1 * MS * WaS
             punkte += 0.5 * BS * WaS
             punkte += punkte * (MiSt * GSS)
-            punkte += 2 * KS * WaS
+            punkte += 5 * KS * WaS
             round(punkte,1)
             #################################
             for event in pygame.event.get():
@@ -188,15 +190,16 @@ class mainLoop:
                         if punkte >= 1000000:
                             punkte -= 1000000
                             time.wait(10)
-                            WaS += 1
+                            WaS += 0.7
                             AnWaS += 1
                     #Goldschmied
                     if event.key == K_s:
                         if punkte >= 100000:
                             punkte -= 100000
                             time.wait(10)
-                            GSS += 2
+                            GSS += 0.7
                             GS += 1
+                    #Troll
                     if event.key == K_l:
                         if punkte >= 1000000000:
                             punkte -= 1000000000
@@ -208,7 +211,7 @@ class mainLoop:
                         Menue()
                         time.wait(20)
                     if event.key == K_m:
-                        punkte += 500000
+                        punkte += 5000
                     #nur feur Entwickler zum Testen
 ###############################################################                        
 mainLoop()
