@@ -29,6 +29,14 @@ def Menue():
     print("Hi")
 class mainLoop:
     def __init__(self):
+        
+        #Quests#
+        Bo = False
+        Qu1 = True
+        TxQ1 = True
+        if Bo == True:
+            Bog += 10
+        ##########
         Taste = "Q"
         Taste2 = "E"
         Taste3 = "A"
@@ -59,7 +67,20 @@ class mainLoop:
         KS = 0
         MiSt += SiMi
         while Dragon_Clicker:
-            
+            #Quest
+            if Qu1 == True:
+                Bo = True
+                TxQ1 = True
+                
+                
+            if Bo == True:
+                Bog += 10
+                Qu1 = False
+                Bo = False
+            if TxQ1 == True:
+                sys_font = pygame.font.SysFont(None, 40)
+                render = sys_font.render(("Eine Horde Bogenschützen schließt sich dir an"),0,blue)
+                setDisplay.blit(render, (200,600))
             sys_font = pygame.font.SysFont(None, 50)
             render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "€"),0,(0,0,0))
             setDisplay.blit(render, (500,10))
@@ -129,9 +150,9 @@ class mainLoop:
             setDisplay.blit(bild, (0,0))
             punkte += 0.03 * Bog * WaS
             punkte += 0.1 * MS * WaS
-            punkte += 0.5 * BS * WaS
+            punkte += 0.6 * BS * WaS
             punkte += punkte * (MiSt * GSS)
-            punkte += 5 * KS * WaS
+            punkte += 7 * KS * WaS
             round(punkte,1)
             #################################
             for event in pygame.event.get():
@@ -142,6 +163,7 @@ class mainLoop:
                     punkte += 1 * LS * WaS                  
                 ###################################
                 if event.type == KEYDOWN:
+                    
                     #Bogenschuetzen
                     if event.key == K_w:
                         if punkte >= 200:
@@ -213,5 +235,8 @@ class mainLoop:
                     if event.key == K_m:
                         punkte += 5000
                     #nur feur Entwickler zum Testen
+
+
+          
 ###############################################################                        
 mainLoop()
