@@ -26,7 +26,9 @@ display_X = 1200
 display_Y = 700
 font = pygame.font.SysFont(None, 25)
 def Menue():
-    print("Hi")
+    setDisplay.fill(coolWhite)
+    Schloss = pygame.image.load("TollesBild.png")
+    setDisplay.blit(Schloss,(display_X/2,display_Y/2))
 class mainLoop:
     def __init__(self):
         
@@ -79,10 +81,10 @@ class mainLoop:
                 Bo = False
             if TxQ1 == True:
                 sys_font = pygame.font.SysFont(None, 40)
-                render = sys_font.render(("Eine Horde Bogenschützen schließt sich dir an"),0,blue)
+                render = sys_font.render(("Eine Horde Bogenschuetzen schliesst sich dir an"),0,blue)
                 setDisplay.blit(render, (200,600))
             sys_font = pygame.font.SysFont(None, 50)
-            render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "€"),0,(0,0,0))
+            render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 40)
             render = sys_font.render("Staerke deiner Armee:"+ str(Update),0,(0,0,0))
@@ -231,7 +233,7 @@ class mainLoop:
                             time.wait(10000000000000000000000000000000000000000000)
                     if event.key == K_ESCAPE:
                         Menue()
-                        time.wait(20)
+                        time.wait(2000)
                     if event.key == K_m:
                         punkte += 5000
                     #nur feur Entwickler zum Testen
