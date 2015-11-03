@@ -67,8 +67,10 @@ class mainLoop:
         KS = 0
         i = random.randrange(5000)
         MiSt += SiMi
-        
-        q = random.randrange(3)   
+        Up1M = 1
+        q = random.randrange(3)
+        if punkte >= 1000000:
+            Up1M = 2
         while Dragon_Clicker:
            
             #Quest
@@ -76,16 +78,16 @@ class mainLoop:
                 TxQ1 = True
                 Bog += 10
                 time.wait(10)
-                i = random.randrange(700)
+                i = random.randrange(10000)
                 q = random.randrange(3)
             
             
             if i > 1:
-                i = random.randrange(700)
+                i = random.randrange(10000)
                 
 
             if i <= 0:
-                i = random.randrange(700)
+                i = random.randrange(10000)
                 
             if TxQ1 == True:
                 
@@ -170,7 +172,7 @@ class mainLoop:
             render = sys_font.render("ESC" +" " +"zum Menu",0,(0,0,0))
             setDisplay.blit(render, (1000,650))
             pygame.display.update()
-            bild = pygame.image.load("CookieBild.bmp")
+            bild = pygame.image.load("DrachenBild.bmp")
             bild = bild.convert()
             setDisplay.blit(bild, (0,0))
             punkte += 0.03 * Bog * WaS
@@ -185,7 +187,7 @@ class mainLoop:
                     pygame.quit()
                     sys.exit
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    punkte += 1 * LS * WaS                  
+                    punkte += 1 * LS * WaS * Up1M            
                 ###################################
                 if event.type == KEYDOWN:
                     
