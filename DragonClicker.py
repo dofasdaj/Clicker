@@ -9,7 +9,6 @@ def message_to_screen(msg,red):
     screen_text = font.render(msg, True, red)
     setDisplay.blit(screen_text, [display_X/2, display_Y/2])
 
-
 red = (255,0,0)
 green = (0,255,0)
 blue = (0,0,255)
@@ -29,15 +28,15 @@ def Menue():
     setDisplay.fill(coolWhite)
     Schloss = pygame.image.load("TollesBild.png")
     setDisplay.blit(Schloss,(display_X/2,display_Y/2))
+    time.wait(2000)
 class mainLoop:
     def __init__(self):
         
         #Quests#
         Bo = False
-        Qu1 = True
-        TxQ1 = True
-        if Bo == True:
-            Bog += 10
+        Qu1 = False
+        TxQ1 = False
+        Qu1S = False
         ##########
         Taste = "Q"
         Taste2 = "E"
@@ -63,26 +62,50 @@ class mainLoop:
         Bog = 0
         SiMi = 0
         MiSt = 0
-        i = 0
         GSS = 1
         GS = 0
         KS = 0
+        i = random.randrange(5000)
         MiSt += SiMi
+        
+        q = random.randrange(3)   
         while Dragon_Clicker:
+           
             #Quest
-            if Qu1 == True:
-                Bo = True
+            if i == 1:
                 TxQ1 = True
-                
-                
-            if Bo == True:
                 Bog += 10
-                Qu1 = False
-                Bo = False
+                time.wait(10)
+                i = random.randrange(700)
+                q = random.randrange(3)
+            
+            
+            if i > 1:
+                i = random.randrange(700)
+                
+
+            if i <= 0:
+                i = random.randrange(700)
+                
             if TxQ1 == True:
-                sys_font = pygame.font.SysFont(None, 40)
-                render = sys_font.render(("Eine Horde Bogenschuetzen schliesst sich dir an"),0,blue)
-                setDisplay.blit(render, (200,600))
+                
+                if q == 0:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Eine Horde Bogenschuetzen schliesst sich dir an"),0,blue)
+                    setDisplay.blit(render, (200,600))
+                    
+                if q == 1:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Eine Horde Bogenschuetzen schliesst sich dir an"),0,green)
+                    setDisplay.blit(render, (200,600))
+                if q == 2:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Eine Horde Bogenschuetzen schliesst sich dir an"),0,red)
+                    setDisplay.blit(render, (200,600))
+                
             sys_font = pygame.font.SysFont(None, 50)
             render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
             setDisplay.blit(render, (500,10))
@@ -233,7 +256,6 @@ class mainLoop:
                             time.wait(10000000000000000000000000000000000000000000)
                     if event.key == K_ESCAPE:
                         Menue()
-                        time.wait(2000)
                     if event.key == K_m:
                         punkte += 5000
                     #nur feur Entwickler zum Testen
