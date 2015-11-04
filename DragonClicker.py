@@ -35,7 +35,12 @@ class mainLoop:
         #Quests#
         Bo = False
         Qu1 = False
+        Qu2 = False
+        Qu3 = False
+        Qu4 = False
+        Qu5 = False
         TxQ1 = False
+        TxQ2 = False
         Qu1S = False
         ##########
         Taste = "Q"
@@ -65,6 +70,7 @@ class mainLoop:
         GSS = 1
         GS = 0
         KS = 0
+        klick = 0
         i = random.randrange(5000)
         MiSt += SiMi
         Up1M = 1
@@ -72,7 +78,14 @@ class mainLoop:
         if punkte >= 1000000:
             Up1M = 2
         while Dragon_Clicker:
-           
+            print(klick)
+            if klick >= 6000:
+                TxQ2 = True
+                BS += 10
+                KS += 2
+                MS += 25
+                Bog += 50
+                klick = 0
             #Quest
             if i == 1:
                 TxQ1 = True
@@ -88,9 +101,26 @@ class mainLoop:
 
             if i <= 0:
                 i = random.randrange(10000)
-                
+            if TxQ2 == True:
+                TxQ1 = False
+                if q == 0:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Eine Horde Krieger schliesst sich dir an"),0,blue)
+                    setDisplay.blit(render, (300,600))
+                    
+                if q == 1:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Eine Horde Krieger schliesst sich dir an"),0,green)
+                    setDisplay.blit(render, (300,600))
+                if q == 2:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Eine Horde Krieger schliesst sich dir an"),0,red)
+                    setDisplay.blit(render, (300,600))
             if TxQ1 == True:
-                
+                TxQ2 = False
                 if q == 0:
                     
                     sys_font = pygame.font.SysFont(None, 40)
@@ -181,13 +211,16 @@ class mainLoop:
             punkte += punkte * (MiSt * GSS)
             punkte += 7 * KS * WaS
             round(punkte,1)
+            if punkte >= 1000000:
+                Up1M = 2
             #################################
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    punkte += 1 * LS * WaS * Up1M            
+                    punkte += 1 * LS * WaS * Up1M
+                    klick += 1
                 ###################################
                 if event.type == KEYDOWN:
                     
@@ -258,8 +291,6 @@ class mainLoop:
                             time.wait(10000000000000000000000000000000000000000000)
                     if event.key == K_ESCAPE:
                         Menue()
-                    if event.key == K_m:
-                        punkte += 5000
                     #nur feur Entwickler zum Testen
 
 
