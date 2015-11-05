@@ -24,14 +24,17 @@ i = 0
 display_X = 1200
 display_Y = 700
 font = pygame.font.SysFont(None, 25)
+
 def Menue():
     setDisplay.fill(coolWhite)
     Schloss = pygame.image.load("TollesBild.png")
     setDisplay.blit(Schloss,(display_X/2,display_Y/2))
     time.wait(2000)
 class mainLoop:
-    def __init__(self):
-        
+    def __init__(self):    
+        #Name
+        NameGegeben = False
+        Name = input("Dein Name: ")
         #Quests#
         Bo = False
         Qu1 = False
@@ -77,8 +80,26 @@ class mainLoop:
         q = random.randrange(3)
         if punkte >= 1000000:
             Up1M = 2
+        
+    
+            
         while Dragon_Clicker:
-            print(klick)
+            
+            #sterben der Truppen
+            print(Bog)
+            Bog -= 0.000004
+            MS -= 0.0000001
+            BS -= 0.0000004
+            KS -= 0.00000005
+            if KS <= 0:
+                KS = 0
+            if MS <= 0:
+                MS = 0
+            if BS <= 0:
+                BS = 0
+            if Bog <= 0:
+                Bog = 0
+            
             if klick >= 6000:
                 TxQ2 = True
                 BS += 10
@@ -142,20 +163,20 @@ class mainLoop:
             render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 40)
-            render = sys_font.render("Staerke deiner Armee:"+ str(Update),0,(0,0,0))
+            render = sys_font.render("Staerke "+ str(Name)+"s"+" Armee:",0,(0,0,0))
             setDisplay.blit(render, (30,50))
             render = sys_font.render("Deine Wirtschaft:",0,(0,0,0))
             setDisplay.blit(render, (30,235))
             sys_font = pygame.font.SysFont(None, 30)
             render = sys_font.render("Dein Schwert:"+str(LS),0,(0,0,0))
             setDisplay.blit(render, (30,90))
-            render = sys_font.render("Bogenschuetzen:"+str(Bog),0,(0,0,0))
+            render = sys_font.render("Bogenschuetzen:"+str(round(Bog)),0,(0,0,0))
             setDisplay.blit(render, (30,120))
-            render = sys_font.render("Magier:"+str(MS),0,(0,0,0))
+            render = sys_font.render("Magier:"+str(round(MS)),0,(0,0,0))
             setDisplay.blit(render, (30,150))
-            render = sys_font.render("Berserker:"+str(BS),0,(0,0,0))
+            render = sys_font.render("Berserker:"+str(round(BS)),0,(0,0,0))
             setDisplay.blit(render, (30,180))
-            render = sys_font.render("Katapult:"+str(KS),0,(0,0,0))
+            render = sys_font.render("Katapult:"+str(round(KS)),0,(0,0,0))
             setDisplay.blit(render, (30,210))
             render = sys_font.render("Minen:"+str(SiMi),0,(0,0,0))
             setDisplay.blit(render, (30,265))
@@ -205,11 +226,11 @@ class mainLoop:
             bild = pygame.image.load("DrachenBild.bmp")
             bild = bild.convert()
             setDisplay.blit(bild, (0,0))
-            punkte += 0.03 * Bog * WaS
-            punkte += 0.1 * MS * WaS
-            punkte += 0.6 * BS * WaS
+            punkte += 0.03 * round(Bog) * WaS
+            punkte += 0.1 * round(MS) * WaS
+            punkte += 0.6 * round(BS) * WaS
             punkte += punkte * (MiSt * GSS)
-            punkte += 7 * KS * WaS
+            punkte += 7 * round(KS) * WaS
             round(punkte,1)
             if punkte >= 1000000:
                 Up1M = 2
@@ -295,5 +316,6 @@ class mainLoop:
 
 
           
-###############################################################                        
+###############################################################
+
 mainLoop()
