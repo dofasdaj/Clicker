@@ -35,7 +35,8 @@ class mainLoop:
     def __init__(self):    
         #Name
         self.NameGegeben = True
-        self.Name = raw_input("Dein Name: ")
+        self.Name = input("Dein Name: ")
+        #Diamante
         #Quests#
         Bo = False
         Qu1 = False
@@ -62,7 +63,7 @@ class mainLoop:
         KosUp6 = 1000000
         KosUp8 = 500000
         Update = 1
-        punkte = 1000
+        punkte = 10000000
         AnWaS = 0
         WaS = 1
         LS = 1
@@ -75,19 +76,28 @@ class mainLoop:
         GS = 0
         KS = 0
         klick = 0
+        SmAn = 0
+        SmSt = 600
+        Di = random.randrange(100)
         i = random.randrange(5000)
         MiSt += SiMi
         Up1M = 1
         q = random.randrange(3)
+        
         if punkte >= 1000000:
-            Up1M = 2
+            Up1M += 1
         
     
             
         while Dragon_Clicker:
+            print(SmSt)
+            print(Di)
             if self.Name == False:
                 self.Name = input("Dein Name: ")
-            
+            Di = random.randrange(SmSt)
+            if Di == 1:
+                SmAn += 1
+                Di = random.randrange(100)
             #sterben der Truppen
             Bog -= 0.0001
             MS -= 0.000008
@@ -163,7 +173,9 @@ class mainLoop:
                 
             sys_font = pygame.font.SysFont(None, 50)
             render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
-            setDisplay.blit(render, (500,10))
+            setDisplay.blit(render, (100,5))
+            render = sys_font.render(("Diamanten:"+" "+str(round(SmAn))),0,(0,0,0))
+            setDisplay.blit(render, (700,5))
             sys_font = pygame.font.SysFont(None, 40)
             render = sys_font.render("Staerke "+ str(self.Name)+"s"+" Armee:",0,(0,0,0))
             setDisplay.blit(render, (30,50))
@@ -233,7 +245,7 @@ class mainLoop:
             punkte += 0.6 * round(BS) * WaS
             punkte += punkte * (MiSt * GSS)
             punkte += 7 * round(KS) * WaS
-            round(punkte,1)
+            
             if punkte >= 1000000:
                 Up1M = 2
             #################################
@@ -314,10 +326,7 @@ class mainLoop:
                             time.wait(10000000000000000000000000000000000000000000)
                     if event.key == K_ESCAPE:
                         Menue()
-                    #nur feur Entwickler zum Testen
-
-
-          
+                    #nur feur Entwickler zum Testen          
 ###############################################################
 
 mainLoop()
