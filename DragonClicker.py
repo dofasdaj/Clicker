@@ -2,6 +2,7 @@ __author__ = 'Smyke, dofasdaj'
 import pygame,sys
 import time
 import random
+import os
 from pygame import *
 pygame.init()
 
@@ -34,7 +35,7 @@ class mainLoop:
     def __init__(self):    
         #Name
         self.NameGegeben = True
-        self.Name = input("Dein Name: ")
+        self.Name = raw_input("Dein Name: ")
         #Quests#
         Bo = False
         Qu1 = False
