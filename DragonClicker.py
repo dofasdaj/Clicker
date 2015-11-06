@@ -92,6 +92,9 @@ class mainLoop:
     
             
         while Dragon_Clicker:
+            pygame.mixer.init()
+            pygame.mixer.music.load("Phase_Three.mp3")
+            pygame.mixer.music.play(1)
             Armeestaercke = Bog
             Armeestaercke += LS
             Armeestaercke += MS
@@ -181,7 +184,7 @@ class mainLoop:
             render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
             setDisplay.blit(render, (100,5))
             render = sys_font.render(("Diamanten:"+" "+str(round(SmAn))),0,(0,0,0))
-            setDisplay.blit(render, (700,5))
+            setDisplay.blit(render, (550,0))
             render = sys_font.render(("Obdachlose Einwohner:"+" "+str(round(Einwohner))),0,(0,0,0))
             setDisplay.blit(render, (40,600))
             sys_font = pygame.font.SysFont(None, 40)
@@ -208,7 +211,7 @@ class mainLoop:
             setDisplay.blit(render, (30,295))
             render = sys_font.render("Waffenschmied:"+str(AnWaS),0,(0,0,0))
             setDisplay.blit(render, (30,330))
-            render = sys_font.render("Bauernhäuser:"+str(BauH),0,(0,0,0))
+            render = sys_font.render("Bauernhaeuser:"+str(BauH),0,(0,0,0))
             setDisplay.blit(render, (30,365))
             render = sys_font.render("Dein Schwert:"+" "+str(KosUp1),0,(255,0,0))
             setDisplay.blit(render, (850,30))
