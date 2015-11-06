@@ -33,8 +33,8 @@ def Menue():
 class mainLoop:
     def __init__(self):    
         #Name
-        NameGegeben = False
-        Name = input("Dein Name: ")
+        self.NameGegeben = True
+        self.Name = input("Dein Name: ")
         #Quests#
         Bo = False
         Qu1 = False
@@ -61,7 +61,7 @@ class mainLoop:
         KosUp6 = 1000000
         KosUp8 = 500000
         Update = 1
-        punkte = 0
+        punkte = 1000
         AnWaS = 0
         WaS = 1
         LS = 1
@@ -84,13 +84,14 @@ class mainLoop:
     
             
         while Dragon_Clicker:
+            if self.Name == False:
+                self.Name = input("Dein Name: ")
             
             #sterben der Truppen
-            print(Bog)
-            Bog -= 0.000004
-            MS -= 0.0000001
-            BS -= 0.0000004
-            KS -= 0.00000005
+            Bog -= 0.0001
+            MS -= 0.000008
+            BS -= 0.0000008
+            KS -= 0.0000001
             if KS <= 0:
                 KS = 0
             if MS <= 0:
@@ -163,7 +164,7 @@ class mainLoop:
             render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
             setDisplay.blit(render, (500,10))
             sys_font = pygame.font.SysFont(None, 40)
-            render = sys_font.render("Staerke "+ str(Name)+"s"+" Armee:",0,(0,0,0))
+            render = sys_font.render("Staerke "+ str(self.Name)+"s"+" Armee:",0,(0,0,0))
             setDisplay.blit(render, (30,50))
             render = sys_font.render("Deine Wirtschaft:",0,(0,0,0))
             setDisplay.blit(render, (30,235))
