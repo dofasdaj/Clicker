@@ -34,8 +34,6 @@ def Menue():
 class mainLoop:
     def __init__(self):    
         #Name
-        self.NameGegeben = True
-        self.Name = input("Dein Name: ")
         #Diamante
         #Quests#
         Bo = False
@@ -63,18 +61,21 @@ class mainLoop:
         KosUp6 = 1000000
         KosUp8 = 500000
         Update = 1
-        punkte = 10000000
+        punkte = 0
         AnWaS = 0
+        Einwohner = 0
         WaS = 1
         LS = 1
         MS = 0
         BS = 0
+        HS = 0
         Bog = 0
         SiMi = 0
         MiSt = 0
         GSS = 1
         GS = 0
         KS = 0
+        BauH = 0
         klick = 0
         SmAn = 0
         SmSt = 600
@@ -84,16 +85,21 @@ class mainLoop:
         Up1M = 1
         q = random.randrange(3)
         
+        
         if punkte >= 1000000:
             Up1M += 1
         
     
             
         while Dragon_Clicker:
-            print(SmSt)
-            print(Di)
-            if self.Name == False:
-                self.Name = input("Dein Name: ")
+            Armeestaercke = Bog
+            Armeestaercke += LS
+            Armeestaercke += MS
+            Armeestaercke += BS
+            Armeestaercke += KS
+            Armeestaercke += HS
+            Einwohner += Armeestaercke/10000
+            
             Di = random.randrange(SmSt)
             if Di == 1:
                 SmAn += 1
@@ -140,44 +146,46 @@ class mainLoop:
                     
                     sys_font = pygame.font.SysFont(None, 40)
                     render = sys_font.render(("Eine Horde Krieger schliesst sich dir an"),0,blue)
-                    setDisplay.blit(render, (300,600))
+                    setDisplay.blit(render, (500,600))
                     
                 if q == 1:
                     
                     sys_font = pygame.font.SysFont(None, 40)
                     render = sys_font.render(("Eine Horde Krieger schliesst sich dir an"),0,green)
-                    setDisplay.blit(render, (300,600))
+                    setDisplay.blit(render, (500,600))
                 if q == 2:
                     
                     sys_font = pygame.font.SysFont(None, 40)
                     render = sys_font.render(("Eine Horde Krieger schliesst sich dir an"),0,red)
-                    setDisplay.blit(render, (300,600))
+                    setDisplay.blit(render, (500,600))
             if TxQ1 == True:
                 TxQ2 = False
                 if q == 0:
                     
                     sys_font = pygame.font.SysFont(None, 40)
                     render = sys_font.render(("Eine Horde Bogenschuetzen schliesst sich dir an"),0,blue)
-                    setDisplay.blit(render, (200,600))
+                    setDisplay.blit(render, (500,600))
                     
                 if q == 1:
                     
                     sys_font = pygame.font.SysFont(None, 40)
                     render = sys_font.render(("Eine Horde Bogenschuetzen schliesst sich dir an"),0,green)
-                    setDisplay.blit(render, (200,600))
+                    setDisplay.blit(render, (500,600))
                 if q == 2:
                     
                     sys_font = pygame.font.SysFont(None, 40)
                     render = sys_font.render(("Eine Horde Bogenschuetzen schliesst sich dir an"),0,red)
-                    setDisplay.blit(render, (200,600))
+                    setDisplay.blit(render, (500,600))
                 
             sys_font = pygame.font.SysFont(None, 50)
             render = sys_font.render(("Geld:"+" "+str(round(punkte)) + "$"),0,(0,0,0))
             setDisplay.blit(render, (100,5))
             render = sys_font.render(("Diamanten:"+" "+str(round(SmAn))),0,(0,0,0))
             setDisplay.blit(render, (700,5))
+            render = sys_font.render(("Obdachlose Einwohner:"+" "+str(round(Einwohner))),0,(0,0,0))
+            setDisplay.blit(render, (40,600))
             sys_font = pygame.font.SysFont(None, 40)
-            render = sys_font.render("Staerke "+ str(self.Name)+"s"+" Armee:",0,(0,0,0))
+            render = sys_font.render("Staerke "+ "deine"+" Armee:",0,(0,0,0))
             setDisplay.blit(render, (30,50))
             render = sys_font.render("Deine Wirtschaft:",0,(0,0,0))
             setDisplay.blit(render, (30,235))
@@ -186,6 +194,8 @@ class mainLoop:
             setDisplay.blit(render, (30,90))
             render = sys_font.render("Bogenschuetzen:"+str(round(Bog)),0,(0,0,0))
             setDisplay.blit(render, (30,120))
+            render = sys_font.render("Bauern:"+str(round(HS)),0,(0,0,0))
+            setDisplay.blit(render, (250,90))
             render = sys_font.render("Magier:"+str(round(MS)),0,(0,0,0))
             setDisplay.blit(render, (30,150))
             render = sys_font.render("Berserker:"+str(round(BS)),0,(0,0,0))
@@ -198,10 +208,16 @@ class mainLoop:
             setDisplay.blit(render, (30,295))
             render = sys_font.render("Waffenschmied:"+str(AnWaS),0,(0,0,0))
             setDisplay.blit(render, (30,330))
+            render = sys_font.render("Bauernhäuser:"+str(BauH),0,(0,0,0))
+            setDisplay.blit(render, (30,365))
             render = sys_font.render("Dein Schwert:"+" "+str(KosUp1),0,(255,0,0))
             setDisplay.blit(render, (850,30))
             render = sys_font.render("Q"+" "+"zum verbessern.",0,(255,0,0))
             setDisplay.blit(render, (850,60))
+            render = sys_font.render("Bauern:"+" "+"1 Ob.Ein.",0,(255,0,0))
+            setDisplay.blit(render, (1100,30))
+            render = sys_font.render("1"+" "+"zum verbessern.",0,(255,0,0))
+            setDisplay.blit(render, (1100,60))
             render = sys_font.render("Magier:"+" "+str(KosUp3),0,(255,0,0))
             setDisplay.blit(render, (850,150))
             render = sys_font.render("E"+" "+"zum verbessern.",0,(255,0,0))
@@ -226,9 +242,9 @@ class mainLoop:
             setDisplay.blit(render, (850,450))
             render = sys_font.render("D" +" "+"zum bauen",0,(0,255,0))
             setDisplay.blit(render, (850,480))
-            render = sys_font.render("ES IST TEUER:"+" "+"10000000000",0,(0,255,0))
+            render = sys_font.render("Bauernhaus:"+" "+"10 Ob.Ein.",0,(0,255,0))
             setDisplay.blit(render, (850,510))
-            render = sys_font.render("L" +" "+"zum bauen",0,(0,255,0))
+            render = sys_font.render("F" +" "+"zum bauen",0,(0,255,0))
             setDisplay.blit(render, (850,540))
             render = sys_font.render("Goldschmied:"+" "+str(KosUp7),0,(0,255,0))
             setDisplay.blit(render, (850,390))
@@ -237,13 +253,14 @@ class mainLoop:
             render = sys_font.render("ESC" +" " +"zum Menu",0,(0,0,0))
             setDisplay.blit(render, (1000,650))
             pygame.display.update()
-            bild = pygame.image.load("DrachenBild.bmp")
+            bild = pygame.image.load("DinoDrache.png")
             bild = bild.convert()
             setDisplay.blit(bild, (0,0))
-            punkte += 0.03 * round(Bog) * WaS
-            punkte += 0.1 * round(MS) * WaS
-            punkte += 0.6 * round(BS) * WaS
-            punkte += punkte * (MiSt * GSS)
+            punkte += 0.1 * round(HS) * WaS * ((BauH + 1)/10)
+            punkte += 0.03 * round(Bog) * WaS * ((BauH + 1)/10)
+            punkte += 0.1 * round(MS) * WaS * ((BauH + 1)/10)
+            punkte += 0.6 * round(BS) * WaS * ((BauH + 1)/10)
+            punkte += punkte * ((MiSt*((BauH/10+ 1))) * GSS)
             punkte += 7 * round(KS) * WaS
             
             if punkte >= 1000000:
@@ -258,7 +275,11 @@ class mainLoop:
                     klick += 1
                 ###################################
                 if event.type == KEYDOWN:
-                    
+                    #Horde
+                    if event.key == K_1:
+                        if round(Einwohner) >= 1:
+                            Einwohner -= 1
+                            HS += 1
                     #Bogenschuetzen
                     if event.key == K_w:
                         if punkte >= 200:
@@ -316,14 +337,20 @@ class mainLoop:
                             time.wait(10)
                             GSS += 0.7
                             GS += 1
-                    #Troll
-                    if event.key == K_l:
-                        if punkte >= 1000000000:
-                            punkte -= 1000000000
+                    #Bauernhaus
+                    if event.key == K_f:
+                        if Einwohner >= round(10):
+                            Einwohner -= 10
                             time.wait(10)
-                            print("Gehe nach drausen!!!")
-                            print("Du spielst dieses Spiel schon zulange")
-                            time.wait(10000000000000000000000000000000000000000000)
+                            BauH += 1
+                    #Troll
+                    #if event.key == K_l:
+                        #if punkte >= 1000000000:
+                            #punkte -= 1000000000
+                            #time.wait(10)
+                            #print("Gehe nach drausen!!!")
+                            #print("Du spielst dieses Spiel schon zulange")
+                            #time.wait(10000000000000000000000000000000000000000000)
                     if event.key == K_ESCAPE:
                         Menue()
                     #nur feur Entwickler zum Testen          
