@@ -92,9 +92,6 @@ class mainLoop:
     
             
         while Dragon_Clicker:
-            pygame.mixer.init()
-            pygame.mixer.music.load("Phase_Three.mp3")
-            pygame.mixer.music.play(1)
             Armeestaercke = Bog
             Armeestaercke += LS
             Armeestaercke += MS
@@ -197,7 +194,7 @@ class mainLoop:
             setDisplay.blit(render, (30,90))
             render = sys_font.render("Bogenschuetzen:"+str(round(Bog)),0,(0,0,0))
             setDisplay.blit(render, (30,120))
-            render = sys_font.render("Bauern:"+str(round(HS)),0,(0,0,0))
+            render = sys_font.render("Horde:"+str(round(HS)),0,(0,0,0))
             setDisplay.blit(render, (250,90))
             render = sys_font.render("Magier:"+str(round(MS)),0,(0,0,0))
             setDisplay.blit(render, (30,150))
@@ -217,10 +214,14 @@ class mainLoop:
             setDisplay.blit(render, (850,30))
             render = sys_font.render("Q"+" "+"zum verbessern.",0,(255,0,0))
             setDisplay.blit(render, (850,60))
-            render = sys_font.render("Bauern:"+" "+"1 Ob.Ein.",0,(255,0,0))
+            render = sys_font.render("Horde:"+" "+"1 Ob.Ein.",0,(255,0,0))
             setDisplay.blit(render, (1100,30))
             render = sys_font.render("1"+" "+"zum verbessern.",0,(255,0,0))
             setDisplay.blit(render, (1100,60))
+            render = sys_font.render("Bauern:"+" "+"1 Horde",0,(255,0,0))
+            setDisplay.blit(render, (1100,90))
+            render = sys_font.render("2"+" "+"zum verbessern.",0,(255,0,0))
+            setDisplay.blit(render, (1100,120))
             render = sys_font.render("Magier:"+" "+str(KosUp3),0,(255,0,0))
             setDisplay.blit(render, (850,150))
             render = sys_font.render("E"+" "+"zum verbessern.",0,(255,0,0))
@@ -283,6 +284,11 @@ class mainLoop:
                         if round(Einwohner) >= 1:
                             Einwohner -= 1
                             HS += 1
+                    #Bauern
+                    if event.key == K_2:
+                        if HS >= 1:
+                            HS -= 1
+                            Einwohner += 1 
                     #Bogenschuetzen
                     if event.key == K_w:
                         if punkte >= 200:
@@ -346,6 +352,7 @@ class mainLoop:
                             Einwohner -= 10
                             time.wait(10)
                             BauH += 1
+                    
                     #Troll
                     #if event.key == K_l:
                         #if punkte >= 1000000000:
