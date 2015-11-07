@@ -45,6 +45,7 @@ class mainLoop:
         TxQ1 = False
         TxQ2 = False
         Qu1S = False
+        RevoltTx = False
         ##########
         Taste = "Q"
         Taste2 = "E"
@@ -79,12 +80,15 @@ class mainLoop:
         klick = 0
         SmAn = 0
         SmSt = 600
+        UnZ = HS * 3000
+        RevoltRi = 100000 - UnZ
+        
         Di = random.randrange(100)
         i = random.randrange(5000)
         MiSt += SiMi
         Up1M = 1
         q = random.randrange(3)
-        
+        r = random.randrange(RevoltRi)
         
         if punkte >= 1000000:
             Up1M += 1
@@ -92,6 +96,10 @@ class mainLoop:
     
             
         while Dragon_Clicker:
+            UnZ = HS * 500
+            RevoltRi = 100000 - UnZ
+            if r != 1:
+                r = random.randrange(RevoltRi)
             Armeestaercke = Bog
             Armeestaercke += LS
             Armeestaercke += MS
@@ -126,6 +134,24 @@ class mainLoop:
                 Bog += 50
                 klick = 0
             #Quest
+
+            if r == 1:
+                HS - HS
+                punkte = punkte * 0.75
+                Bog = Bog * 0.75
+                MS = MS * 0.75 
+                BS = BS * 0.75
+                KS = KS * 0.75
+                RevoltTx = True
+                RevoltRi += 10000
+                r = random.randrange(RevoltRi)
+                q = random.randrange(3)
+            if r > 1:
+                r = random.randrange(RevoltRi)
+                
+
+            if r <= 0:
+                r = random.randrange(RevoltRi)
             if i == 1:
                 TxQ1 = True
                 Bog += 10
@@ -140,8 +166,29 @@ class mainLoop:
 
             if i <= 0:
                 i = random.randrange(10000)
+            if RevoltTx == True:
+                TxQ2 = False
+                TxQ1 = False
+                RevoltTx = False
+                if q == 0:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Revolte!!!"),0,blue)
+                    setDisplay.blit(render, (500,600))
+                    
+                if q == 1:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Revolte!!!"),0,green)
+                    setDisplay.blit(render, (500,600))
+                if q == 2:
+                    
+                    sys_font = pygame.font.SysFont(None, 40)
+                    render = sys_font.render(("Revolte!!!"),0,red)
+                    setDisplay.blit(render, (500,600))
             if TxQ2 == True:
                 TxQ1 = False
+                RevoltTx = False
                 if q == 0:
                     
                     sys_font = pygame.font.SysFont(None, 40)
@@ -160,6 +207,7 @@ class mainLoop:
                     setDisplay.blit(render, (500,600))
             if TxQ1 == True:
                 TxQ2 = False
+                RevoltTx = False
                 if q == 0:
                     
                     sys_font = pygame.font.SysFont(None, 40)
