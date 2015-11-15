@@ -309,9 +309,9 @@ class MainLoop:
                     if event.type == pygame.QUIT:
                         datenstrom = open("Bluber.txt","r")
 
-                        datenstrom.write("Hallo")
+                        datenstrom.write("Hi")
                         for lesen in datenstrom.readlines():
-                            print lesen
+                            print(lesen)
                         datenstrom.close()
                         pygame.quit()
                         sys.exit()
