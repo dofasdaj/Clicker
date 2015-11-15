@@ -34,9 +34,11 @@ def menue():
     setDisplay.fill(coolWhite)
     message_to_screen("Level 1", red)
     sys_font = pygame.font.SysFont(None, 40)
-    render = sys_font.render(" Press Q to quit", 0, red)
+    render = sys_font.render(" Press ESC to quit", 0, red)
     setDisplay.blit(render, (500, 600))
     pygame.display.update()
+
+    
 
 
 class MainLoop:
@@ -406,7 +408,7 @@ class MainLoop:
                             sys.exit()
                             ###################################
                         if event.type == KEYDOWN:
-                            if event.key == pygame.K_m:
+                            if event.key == pygame.K_ESCAPE:
                                 punkterausch = True
                                 whileVaribel = False
 
