@@ -52,8 +52,11 @@ def karten():
     sys_font = pygame.font.SysFont(None, 80)
     render = sys_font.render("Das ist die Karte", 0, red)
     setDisplay.blit(render, (450, 20))
+    bild = pygame.image.load("Karte.png")
+    bild = bild.convert()
+    setDisplay.blit(bild, (0, 0))
     pygame.display.update()
-
+    
 class MainLoop:
     def __init__(self):
         Kartenwhile = False
