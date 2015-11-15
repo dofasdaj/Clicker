@@ -33,14 +33,16 @@ font = pygame.font.SysFont(None, 25)
 
 def menue():
     setDisplay.fill(coolWhite)
-    message_to_screen("Level 1", red)
+    sys_font = pygame.font.SysFont(None, 80)
+    render = sys_font.render("Level 1", 0, red)
+    setDisplay.blit(render, (540, 20))
+    pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
     sys_font = pygame.font.SysFont(None, 40)
     render = sys_font.render(" Press ESC to quit", 0, red)
     setDisplay.blit(render, (500, 600))
-    pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
+    render = sys_font.render("Karte", 0, coolBlack)
+    setDisplay.blit(render, (1160, 650))
     pygame.display.update()
-
-    
 
 
 class MainLoop:
@@ -95,6 +97,7 @@ class MainLoop:
         while Dragon_Clicker:
             punkterausch = True
             Menu = False
+            
             if punkterausch:
                 UnZ = HS * 500
                 RevoltRi = 100000 - UnZ
@@ -415,7 +418,7 @@ class MainLoop:
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                             pygame.quit()
-                            sys.exit()
+                            exit()
                             ###################################
                         if event.type == KEYDOWN:
                             if event.key == pygame.K_ESCAPE:
