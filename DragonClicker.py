@@ -307,15 +307,15 @@ class MainLoop:
                 #################################
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
-                        pygame.quit()
-                        sys.exit()
+                        datenstrom = open("Bluber.txt","r")
 
-
-                        datenstrom = open("bluber.txt")
                         datenstrom.write("Hallo")
                         for lesen in datenstrom.readlines():
                             print lesen
                         datenstrom.close()
+                        pygame.quit()
+                        sys.exit()
+
 
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         punkte += 1 * LS * WaS * Up1M
