@@ -13,6 +13,7 @@ def message_to_screen(msg, red):
 
 
 whileVaribel = True
+Kartenwhile = True
 
 red = (255, 0, 0)
 green = (0, 255, 0)
@@ -37,16 +38,26 @@ def menue():
     render = sys_font.render("Level 1", 0, red)
     setDisplay.blit(render, (540, 20))
     pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
+    pygame.draw.rect(setDisplay, (238,213,183), [0,600,200,200])
     sys_font = pygame.font.SysFont(None, 40)
-    render = sys_font.render(" Press ESC to quit", 0, red)
+    render = sys_font.render("Press ESC to quit", 0, red)
     setDisplay.blit(render, (500, 600))
     render = sys_font.render("Karte", 0, coolBlack)
     setDisplay.blit(render, (1160, 650))
+    render = sys_font.render("Spiel", 0, coolBlack)
+    setDisplay.blit(render, (60, 650))
     pygame.display.update()
-
+def karten():
+    setDisplay.fill(coolWhite)
+    sys_font = pygame.font.SysFont(None, 80)
+    render = sys_font.render("Das ist die Karte", 0, red)
+    setDisplay.blit(render, (450, 20))
+    pygame.display.update()
 
 class MainLoop:
     def __init__(self):
+        Kartenwhile = False
+        Karte = False
         # Name
         # Diamante
         # Quests#
@@ -97,8 +108,10 @@ class MainLoop:
         while Dragon_Clicker:
             punkterausch = True
             Menu = False
+            Kartenwhile = False
+            Karte = False
             
-            if punkterausch:
+            if punkterausch == True:
                 UnZ = HS * 500
                 RevoltRi = 100000 - UnZ
                 if r != 1:
@@ -311,14 +324,8 @@ class MainLoop:
                 #################################
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
-                        datenstrom = open("Robot/Bluber.txt","r")
-
-                        datenstrom.write("Hi")
-                        for lesen in datenstrom.readlines():
-                            print(lesen)
-                        datenstrom.close()
                         pygame.quit()
-                        sys.exit()
+                        exit()
 
 
                     if event.type == pygame.MOUSEBUTTONDOWN:
@@ -399,8 +406,12 @@ class MainLoop:
                                 Einwohner -= 10
                                 time.wait(10)
                                 BauH += 1
+
+
+                        #MENUE
                         if event.key == pygame.K_ESCAPE:
                             Menu = True
+                        
 
                             # Troll
                             # if event.key == K_l:
@@ -421,10 +432,32 @@ class MainLoop:
                             exit()
                             ###################################
                         if event.type == KEYDOWN:
+                            if event.key == K_w:
+                                Karte = True
+                                whileVaribel = False
                             if event.key == pygame.K_ESCAPE:
                                 punkterausch = True
                                 whileVaribel = False
+                            if event.key == K_s:
+                                datenstrom = open("Speichern.txt","w")
+                                datenstrom.write("Hallo")
+                                datenstrom.close()
+                            
 
+            
+            if Karte == True:
+                Kartenwhile = True
+                while Kartenwhile:
+                    karten()
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            exit()
+                            ###################################
+                        if event.type == KEYDOWN:
+                            if event.key == pygame.K_ESCAPE:
+                                punkterausch = True
+                                Kartenwhile = False
 
 ###############################################################
 
