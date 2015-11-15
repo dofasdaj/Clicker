@@ -2,6 +2,7 @@ __author__ = 'Smyke, dofasdaj'
 import pygame
 import random
 from pygame import *
+import os
 
 pygame.init()
 
@@ -308,6 +309,14 @@ class MainLoop:
                     if event.type == pygame.QUIT:
                         pygame.quit()
                         sys.exit()
+
+
+                        datenstrom = open("bluber.txt")
+                        datenstrom.write("Hallo")
+                        for lesen in datenstrom.readlines():
+                            print lesen
+                        datenstrom.close()
+
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         punkte += 1 * LS * WaS * Up1M
                         klick += 1
