@@ -30,8 +30,8 @@
       <file leaf-file-name="DragonClicker.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DragonClicker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.064638786" vertical-offset="5015" max-vertical-offset="7361">
-              <caret line="297" column="67" selection-start-line="297" selection-start-column="67" selection-end-line="297" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.7756654" vertical-offset="255" max-vertical-offset="7378">
+              <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
               <folding>
                 <element signature="e#31#44#0" expanded="true" />
               </folding>
@@ -349,6 +349,16 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/DragonClicker.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7378">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#31#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DragonClicker.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7208">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
@@ -496,8 +506,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DragonClicker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.064638786" vertical-offset="5015" max-vertical-offset="7361">
-          <caret line="297" column="67" selection-start-line="297" selection-start-column="67" selection-end-line="297" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.7756654" vertical-offset="255" max-vertical-offset="7378">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
           <folding>
             <element signature="e#31#44#0" expanded="true" />
           </folding>

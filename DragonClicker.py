@@ -37,6 +37,7 @@ def menue():
     sys_font = pygame.font.SysFont(None, 40)
     render = sys_font.render(" Press ESC to quit", 0, red)
     setDisplay.blit(render, (500, 600))
+    pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
     pygame.display.update()
 
     
@@ -307,7 +308,7 @@ class MainLoop:
                 #################################
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
-                        datenstrom = open("Bluber.txt","r")
+                        datenstrom = open("Robot/Bluber.txt","r")
 
                         datenstrom.write("Hi")
                         for lesen in datenstrom.readlines():
