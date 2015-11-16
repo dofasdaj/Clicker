@@ -39,6 +39,9 @@ def karten():
     bild = pygame.image.load("Karte.png")
     bild = bild.convert()
     setDisplay.blit(bild, (0, 0))
+    pygame.draw.rect(setDisplay,(238,213,183),(1100,600,200,200))
+    render = sys_font.render("Menu", 0, coolBlack)
+    setDisplay.blit(render, (1160, 650))
     pygame.display.update()
 def menue():
     setDisplay.fill(coolWhite)
@@ -65,6 +68,8 @@ def menue():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 Karte = True
                 Kartenwhile = True
+                if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
+                    setDisplay.fill(coolWhite)
                 while Kartenwhile:
                     karten()
                     for event in pygame.event.get():
