@@ -31,7 +31,15 @@ display_X = 1200
 display_Y = 700
 font = pygame.font.SysFont(None, 25)
 
-
+def karten():
+    setDisplay.fill(coolWhite)
+    sys_font = pygame.font.SysFont(None, 80)
+    render = sys_font.render("Das ist die Karte", 0, red)
+    setDisplay.blit(render, (450, 20))
+    bild = pygame.image.load("Karte.png")
+    bild = bild.convert()
+    setDisplay.blit(bild, (0, 0))
+    pygame.display.update()
 def menue():
     setDisplay.fill(coolWhite)
     mouse = pygame.mouse.get_pos()
@@ -46,25 +54,25 @@ def menue():
     render = sys_font.render("Karte", 0, coolBlack)
     setDisplay.blit(render, (1160, 650))
     render = sys_font.render("Spiel", 0, coolBlack)
-    if 1100+200 > mouse[0] > 150 and 600+200 > mouse[1] > 600 :
+    if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
         #blabla = pygame.image.load("Karte.png")
         #setDisplay.blit(blabla,(0,0))
-        pygame.draw.rect(setDisplay,coolBlack,(1100,796,200,4))
+        pygame.draw.rect(setDisplay,coolBlack,(1095,595,300,300))
+        pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
+        render = sys_font.render("Karte", 0, coolBlack)
+        setDisplay.blit(render, (1160, 650))
         for event in pygame.event.get():
-            if event == pygame.MOUSEBUTTONDOWN:
-                blabla = pygame.image.load("Karte.png")
-                setDisplay.blit(blabla,(0,0))
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                Karte = True
+                Kartenwhile = True
+                while Kartenwhile:
+                    karten()
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            exit()
+                pygame.display.update()
     setDisplay.blit(render, (60, 650))
-    pygame.display.update()
-
-def karten():
-    setDisplay.fill(coolWhite)
-    sys_font = pygame.font.SysFont(None, 80)
-    render = sys_font.render("Das ist die Karte", 0, red)
-    setDisplay.blit(render, (450, 20))
-    bild = pygame.image.load("Karte.png")
-    bild = bild.convert()
-    setDisplay.blit(bild, (0, 0))
     pygame.display.update()
     
 class MainLoop:
@@ -445,9 +453,6 @@ class MainLoop:
                             exit()
                             ###################################
                         if event.type == KEYDOWN:
-                            if event.key == K_w:
-                                Karte = True
-                                whileVaribel = False
                             if event.key == pygame.K_ESCAPE:
                                 punkterausch = True
                                 whileVaribel = False
