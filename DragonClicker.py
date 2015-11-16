@@ -47,10 +47,16 @@ def menue():
     setDisplay.blit(render, (1160, 650))
     render = sys_font.render("Spiel", 0, coolBlack)
     if 1100+200 > mouse[0] > 150 and 600+200 > mouse[1] > 600 :
-        blabla = pygame.image.load("Karte.png")
-        setDisplay.blit(blabla,(0,0))
+        #blabla = pygame.image.load("Karte.png")
+        #setDisplay.blit(blabla,(0,0))
+        pygame.draw.rect(setDisplay,coolBlack,(1100,796,200,4))
+        for event in pygame.event.get():
+            if event == pygame.MOUSEBUTTONDOWN:
+                blabla = pygame.image.load("Karte.png")
+                setDisplay.blit(blabla,(0,0))
     setDisplay.blit(render, (60, 650))
     pygame.display.update()
+
 def karten():
     setDisplay.fill(coolWhite)
     sys_font = pygame.font.SysFont(None, 80)
