@@ -11,7 +11,7 @@ def message_to_screen(msg, red):
     screen_text = font.render(msg, True, red)
     setDisplay.blit(screen_text, [display_X / 2, display_Y / 2])
 
-
+Menu = True
 whileVaribel = True
 Kartenwhile = True
 
@@ -31,81 +31,12 @@ display_X = 1200
 display_Y = 700
 font = pygame.font.SysFont(None, 25)
 
-def karten():
-    setDisplay.fill(coolWhite)
-    mouse = pygame.mouse.get_pos()
-    sys_font = pygame.font.SysFont(None, 80)
-    render = sys_font.render("Das ist die Karte", 0, red)
-    setDisplay.blit(render, (450, 20))
-    bild = pygame.image.load("Karte.png")
-    bild = bild.convert()
-    setDisplay.blit(bild, (0, 0))
-    sys_font = pygame.font.SysFont(None, 40)
-    pygame.draw.rect(setDisplay,(238,213,183),(1100,600,200,200))
-    render = sys_font.render("Menu", 0, coolBlack)
-    setDisplay.blit(render, (1160, 650))
-    if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
-        pygame.draw.rect(setDisplay,coolBlack,(1095,595,300,300))
-        pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
-        render = sys_font.render("Menu", 0, coolBlack)
-        setDisplay.blit(render, (1160, 650))
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                whileVaribel = True
-                while whileVaribel:
-                    menue()
-                    for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                            pygame.quit()
-                            exit()
-                            ###################################
-                        if event.type == KEYDOWN:
-                            if event.key == pygame.K_ESCAPE:
-                                punkterausch = True
-                                whileVaribel = False
-                            if event.key == K_s:
-                                datenstrom = open("Speichern.txt","w")
-                                datenstrom.write("Hallo")
-                                datenstrom.close()
-    pygame.display.update()
-    
-def menue():
-    setDisplay.fill(coolWhite)
-    mouse = pygame.mouse.get_pos()
-    sys_font = pygame.font.SysFont(None, 80)
-    render = sys_font.render("Level 1", 0, red)
-    setDisplay.blit(render, (540, 20))
-    pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
-    pygame.draw.rect(setDisplay, (238,213,183), [0,600,200,200])
-    sys_font = pygame.font.SysFont(None, 40)
-    render = sys_font.render("Press ESC to quit", 0, red)
-    setDisplay.blit(render, (500, 600))
-    render = sys_font.render("Karte", 0, coolBlack)
-    setDisplay.blit(render, (1160, 650))
-    render = sys_font.render("Spiel", 0, coolBlack)
-    if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
-        pygame.draw.rect(setDisplay,coolBlack,(1095,595,300,300))
-        pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
-        render = sys_font.render("Karte", 0, coolBlack)
-        setDisplay.blit(render, (1160, 650))
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                Karte = True
-                Kartenwhile = True
-                if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
-                    setDisplay.fill(coolWhite)
-                while Kartenwhile:
-                    karten()
-                    for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                            pygame.quit()
-                            exit()
-                pygame.display.update()
-    setDisplay.blit(render, (60, 650))
-    pygame.display.update()
+
     
 class MainLoop:
     def __init__(self):
+        Lev1 = True
+        Lev2 = False
         Kartenwhile = False
         Karte = False
         # Name
@@ -198,8 +129,11 @@ class MainLoop:
                     MS += 25
                     Bog += 50
                     klick = 0
+                
+                bild = pygame.image.load("DinoDrache.png")
+                bild = bild.convert()
+                setDisplay.blit(bild, (0, 0))
                 # Quest
-
                 if r == 1:
                     HS - HS
                     punkte *= 0.75
@@ -358,9 +292,7 @@ class MainLoop:
                 render = sys_font.render("ESC" + " " + "zum Menu", 0, (0, 0, 0))
                 setDisplay.blit(render, (1000, 650))
                 pygame.display.update()
-                bild = pygame.image.load("DinoDrache.png")
-                bild = bild.convert()
-                setDisplay.blit(bild, (0, 0))
+                
                 # ToDo
                 punkte += 0.1 * round(HS) * WaS * ((BauH / 10) + 1)
                 punkte += 0.03 * round(Bog) * WaS * ((BauH / 10) + 1)
@@ -461,6 +393,7 @@ class MainLoop:
                         #MENUE
                         if event.key == pygame.K_ESCAPE:
                             Menu = True
+                            punkterausch = False
                         
 
                             # Troll
@@ -472,7 +405,7 @@ class MainLoop:
                             # print("Du spielst dieses Spiel schon zulange")
                             # time.wait(10000000000000000000000000000000000000000000)
                             # nur feur Entwickler zum Testen
-            if Menu:
+            if Menu == True:
                 whileVaribel = True
                 while whileVaribel:
                     menue()
@@ -505,7 +438,121 @@ class MainLoop:
                             if event.key == pygame.K_ESCAPE:
                                 punkterausch = True
                                 Kartenwhile = False
-
+    
+    
+    def update():
+        bild = pygame.image.load("BurgG1.png")
+        bild = bild.convert()
+        setDisplay.blit(bild, (0, 0))
+def karten():
+    setDisplay.fill(coolWhite)
+    mouse = pygame.mouse.get_pos()
+    sys_font = pygame.font.SysFont(None, 80)
+    render = sys_font.render("Das ist die Karte", 0, red)
+    setDisplay.blit(render, (450, 20))
+    bild = pygame.image.load("Karte2.png")
+    bild = bild.convert()
+    setDisplay.blit(bild, (0, 0))
+    bild = pygame.image.load("Burg1.png")
+    bild = bild.convert()
+    setDisplay.blit(bild, (100, 100))
+    sys_font = pygame.font.SysFont(None, 40)
+    pygame.draw.rect(setDisplay,(238,213,183),(1100,600,200,200))
+    render = sys_font.render("Menu", 0, coolBlack)
+    setDisplay.blit(render, (1160, 650))
+    if 100+240 > mouse[0] > 100 and 100+140 > mouse[1] > 100 :
+        pygame.draw.rect(setDisplay,coolBlack,(95,95,250,135))
+        setDisplay.blit(bild, (100, 100))
+        bild = pygame.image.load("Burg1.png")
+        bild = bild.convert()
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                whileVaribel = True
+                Karte = True
+                
+                
+            
+                
+                
+                
+    if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
+        pygame.draw.rect(setDisplay,coolBlack,(1095,595,300,300))
+        pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
+        render = sys_font.render("Menu", 0, coolBlack)
+        setDisplay.blit(render, (1160, 650))
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                whileVaribel = True
+                while whileVaribel:
+                    menue()
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            exit()
+                            ###################################
+                        if event.type == KEYDOWN:
+                            if event.key == pygame.K_ESCAPE:
+                                punkterausch = True
+                                whileVaribel = False
+                            if event.key == K_s:
+                                datenstrom = open("Speichern.txt","w")
+                                datenstrom.write("Hallo")
+                                datenstrom.close()
+    pygame.display.update()
+    
+def menue():
+    setDisplay.fill(coolWhite)
+    mouse = pygame.mouse.get_pos()
+    sys_font = pygame.font.SysFont(None, 80)
+    render = sys_font.render("Level 1", 0, red)
+    setDisplay.blit(render, (540, 20))
+    pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
+    pygame.draw.rect(setDisplay, (238,213,183), [0,600,200,200])
+    sys_font = pygame.font.SysFont(None, 40)
+    render = sys_font.render("Press ESC to quit", 0, red)
+    setDisplay.blit(render, (500, 600))
+    render = sys_font.render("Karte", 0, coolBlack)
+    setDisplay.blit(render, (1160, 650))
+    render = sys_font.render("Spiel", 0, coolBlack)
+    setDisplay.blit(render, (60, 650))
+    if 0+300 > mouse[0] > 0 and 600+200 > mouse[1] > 600 :
+        pygame.draw.rect(setDisplay,coolBlack,(0,595,205,105))
+        pygame.draw.rect(setDisplay, (238,213,183), [0,600,200,200])
+        render = sys_font.render("Karte", 0, coolBlack)
+        setDisplay.blit(render, (1160, 650))
+        render = sys_font.render("Spiel", 0, coolBlack)
+        setDisplay.blit(render, (60, 650))
+        Kartenwhile = False
+        Dragon_Clicker = True
+        whileVaribel = False
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                punkterausch = True
+                Dragon_Clicker = True
+                
+    if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
+        pygame.draw.rect(setDisplay,coolBlack,(1095,595,300,300))
+        pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
+        render = sys_font.render("Karte", 0, coolBlack)
+        setDisplay.blit(render, (1160, 650))
+        render = sys_font.render("Spiel", 0, coolBlack)
+        setDisplay.blit(render, (60, 650))
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                Karte = True
+                Kartenwhile = True
+                whileVaribel = False
+                if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
+                    setDisplay.fill(coolWhite)
+                
+                while Kartenwhile:
+                    karten()
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            exit()
+                pygame.display.update()
+    setDisplay.blit(render, (60, 650))
+    pygame.display.update()
 ###############################################################
-
 MainLoop()
