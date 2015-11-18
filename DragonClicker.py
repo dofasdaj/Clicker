@@ -406,13 +406,19 @@ class MainLoop:
                             # time.wait(10000000000000000000000000000000000000000000)
                             # nur feur Entwickler zum Testen
             if Menu == True:
+                mouse = pygame.mouse.get_pos()
                 whileVaribel = True
                 while whileVaribel:
                     menue()
                     for event in pygame.event.get():
+                        if 0+300 > mouse[0] > 0 and 600+200 > mouse[1] > 600:
+                            if event.type == pygame.MOUSEBUTTONDOWN:
+                                punkterausch = True
+                                whileVaribel = False
                         if event.type == pygame.QUIT:
                             pygame.quit()
                             exit()
+                            
                             ###################################
                         if event.type == KEYDOWN:
                             if event.key == pygame.K_ESCAPE:
