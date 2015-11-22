@@ -35,6 +35,9 @@ font = pygame.font.SysFont(None, 25)
     
 class MainLoop:
     def __init__(self):
+        Ubergang = False
+        Kar1 = True
+        Kar2 = False
         Lev1 = True
         Lev2 = False
         Kartenwhile = False
@@ -91,6 +94,11 @@ class MainLoop:
             Menu = False
             Kartenwhile = False
             Karte = False
+            if Ubergang == True:
+                punkterausch = True
+                Menu = False
+                Kartenwhile = False
+                Karte = False
             
             if punkterausch == True:
                 UnZ = HS * 500
@@ -129,10 +137,14 @@ class MainLoop:
                     MS += 25
                     Bog += 50
                     klick = 0
-                
-                bild = pygame.image.load("DinoDrache.png")
-                bild = bild.convert()
-                setDisplay.blit(bild, (0, 0))
+                if Kar1 == True:
+                    bild = pygame.image.load("DinoDrache.png")
+                    bild = bild.convert()
+                    setDisplay.blit(bild, (0, 0))
+                if Kar2 == True:
+                    bild = pygame.image.load("BurgG1.png")
+                    bild = bild.convert()
+                    setDisplay.blit(bild, (0, 0))
                 # Quest
                 if r == 1:
                     HS - HS
@@ -411,15 +423,16 @@ class MainLoop:
                 while whileVaribel:
                     menue()
                     for event in pygame.event.get():
-                        if 0+300 > mouse[0] > 0 and 600+200 > mouse[1] > 600:
-                            if event.type == pygame.MOUSEBUTTONDOWN:
-                                punkterausch = True
-                                whileVaribel = False
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            Ubergang = True
+                                    
                         if event.type == pygame.QUIT:
                             pygame.quit()
                             exit()
                             
                             ###################################
+
+                                        
                         if event.type == KEYDOWN:
                             if event.key == pygame.K_ESCAPE:
                                 punkterausch = True
@@ -473,14 +486,9 @@ def karten():
         bild = bild.convert()
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
-                whileVaribel = True
-                Karte = True
-                
-                
-            
-                
-                
-                
+                punkterausch = True
+                kartenwhile = False
+                display.update()
     if 1100+200 > mouse[0] > 1100 and 600+200 > mouse[1] > 600 :
         pygame.draw.rect(setDisplay,coolBlack,(1095,595,300,300))
         pygame.draw.rect(setDisplay, (238,213,183), [1100,600,200,200])
